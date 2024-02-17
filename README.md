@@ -1,4 +1,4 @@
-# coremicroservicebase
+# CoreMicroServiceBase
 # MicroservicesBase
 
 MicroservicesBase is a generic repository implementation for .NET Core applications, providing essential CRUD operations for entities within a database context. This repository template is designed to simplify the development of data access layers, making it ideal for microservices architectures.
