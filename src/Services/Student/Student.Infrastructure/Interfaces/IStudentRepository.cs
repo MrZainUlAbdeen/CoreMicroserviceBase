@@ -2,7 +2,7 @@
 
 namespace Student.Infrastructure.Interfaces
 {
-    public interface IStudentRepository : IBaseRepository<Domain.Student>
+    public interface IStudentRepository : ITriggersBaseRepository<Domain.Student>
     {
     }
 }
