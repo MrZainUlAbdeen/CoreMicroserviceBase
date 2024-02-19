@@ -1,6 +1,6 @@
 ﻿namespace Teacher.DTO
 {
-    public class Class1
+    public class TeacherDto
     {
 
     }

@@ -59,33 +59,33 @@ namespace Student.API.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateStudent([FromBody] StudentUpdateDto entityToUpdate)
         {
-            var isExisting = await _studentRepository.GetByIdAsync(entityToUpdate.Id);
+            var isExistingStudent = await _studentRepository.GetByIdAsync(entityToUpdate.Id);
 
-            if (isExisting is null)
+            if (isExistingStudent is null)
             {
                 return NotFound(new { Error = " student not found" });
             }
 
-            isExisting.PhoneNumber = entityToUpdate.PhoneNumber;
-            isExisting.Address = entityToUpdate.Address;
-            isExisting.City = entityToUpdate.City;
-            isExisting.State = entityToUpdate.State;
-            isExisting.Country = entityToUpdate.Country;
-            isExisting.ZipCode = entityToUpdate.ZipCode;
+            isExistingStudent.PhoneNumber = entityToUpdate.PhoneNumber;
+            isExistingStudent.Address = entityToUpdate.Address;
+            isExistingStudent.City = entityToUpdate.City;
+            isExistingStudent.State = entityToUpdate.State;
+            isExistingStudent.Country = entityToUpdate.Country;
+            isExistingStudent.ZipCode = entityToUpdate.ZipCode;
 
-            _studentRepository.Update(isExisting);
-            return Ok(isExisting);
+            _studentRepository.Update(isExistingStudent);
+            return Ok(isExistingStudent);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStudent(Guid id)
         {
-            var isExisting = await _studentRepository.GetByIdAsync(id);
-            if (isExisting is null)
+            var isExistingStudent = await _studentRepository.GetByIdAsync(id);
+            if (isExistingStudent is null)
             {
                 return NotFound();
             }
-            _studentRepository.Delete(isExisting);
+            _studentRepository.Delete(isExistingStudent);
             return Ok();
         }
     }
