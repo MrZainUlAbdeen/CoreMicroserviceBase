@@ -6,11 +6,11 @@ namespace Student.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentsController : ControllerBase
     {
         private readonly IStudentRepository _studentRepository;
 
-        public StudentController(IStudentRepository studentRepository)
+        public StudentsController(IStudentRepository studentRepository)
         {
             _studentRepository = studentRepository;
         }
