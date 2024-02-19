@@ -27,17 +27,29 @@ using System;
 using Microsoft.EntityFrameworkCore;
 
 // Define your DbContextWithTriggers class
+// Using with EF core triggers
 public class YourDbContext : DbContextWithTriggers
 {
     // Define your DbSet<TEntity> properties
-    public DbSet<Student> Students { get; set; }
+    public DbSet<Model_class> model_name { get; set; }
 }
 
-// Create an instance of your DbContextWithTriggers
+// Define your DbContext class
+// Without using Triggers
+public class YourDbContext : DbContext
+{
+    // Define your DbSet<TEntity> properties
+    public DbSet<Model_class> model_name { get; set; }
+}
+
+// Create an instance of your DbContext
 var dbContext = new YourDbContext();
 
 // Create an instance of BaseRepository using your DbContextWithTriggers
-var repository = new BaseRepository<Student, YourDbContext>(dbContext);
+var repository = new TriggersBaseRepository<Model_class, YourDbContextWithTriggers>(dbContext);
+
+// Create an instance of BaseRepository using your DbContext
+var repository = new BaseRepository<Model_class, YourDbContext>(dbContext);
 
 // Use the repository to perform CRUD operations
 var newStudent = new Student { FirstName = "John", LastName = "Doe", DateOfBirth = DateTime.Now };
