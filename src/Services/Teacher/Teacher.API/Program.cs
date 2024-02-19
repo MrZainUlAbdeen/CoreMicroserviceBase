@@ -1,6 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using Teacher.Infrastructure;
+using Teacher.Infrastructure.Interfaces;
+using Teacher.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<TeacherDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TeacherdbConnection"));
+});
+
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
