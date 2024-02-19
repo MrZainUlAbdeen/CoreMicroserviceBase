@@ -1,12 +1,11 @@
-﻿using EntityFrameworkCore.Triggers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Repositories
 {
     public class BaseRepository<TEntity, TDbContext> : IBaseRepository<TEntity>
         where TEntity : class
-        where TDbContext : DbContextWithTriggers
+        where TDbContext : DbContext
     {
         public TDbContext _dbContext { get; private set; }
         private readonly DbSet<TEntity> _dbSet;
